@@ -1,0 +1,41 @@
+{
+  "name": "commerce",
+  "version": "0.0.0",
+  "description": "Inventory app",
+  "main": "app/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test --recursive -R spec",
+    "coveralls" : "./node_modules/mocha/bin/mocha test --recursive -r blanket -R mocha-lcov-reporter | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zoeames/commerce"
+  },
+  "author": "Zoe Ames <zoeames@gmail.com>",
+  "contributors": ["JoAnn Brooks <joannbrooks036@gmail.com>"],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoeames/commerce/issues"
+  },
+  "homepage": "https://github.com/zoeames/commerce",
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "express": "^4.7.2",
+    "jade": "^1.5.0",
+    "morgan": "^1.2.2"
+  },
+  "devDependencies": {
+    "blanket": "^1.1.6",
+    "chai": "^1.9.1",
+    "coveralls": "^2.11.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint-stylish": "^0.4.0",
+    "mocha": "^1.21.3",
+    "mocha-lcov-reporter": "0.0.1"
+  }
+}
