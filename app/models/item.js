@@ -14,5 +14,8 @@ function Item(body){
   this.percentOff =parseInt(body.percentOff);
 }
 
+Item.prototype.cost = function(){
+    return (this.msrp - ((this.percentOff / 100) * this.msrp));
+};
 
 module.exports = Item;
