@@ -1,5 +1,8 @@
 'use strict';
 
+var Mongo = require('mongodb');
+var _ = require('lodash');
+
 function Item(body){
   //console.log(body);
   this.name =body.name;
@@ -28,5 +31,48 @@ Item.prototype.save = function(cb){
   Item.collection.save(this, cb);
 };
 
+Item.find = function(query, cb){
+  Item.collection.find(query).toArray(function(err, items){
+    for(var i = 0; i < items.length; i++){items[i] = changePrototype(items[i]);}
+    //console.log(items);
+    cb(err, items);
+  });
+};
+
+Item.all = function(cb){
+  Item.collection.find().toArray(function(err, objects){
+    var items = objects.map(function(o){
+      return changePrototype(o);
+    });
+
+    cb(items);
+  });
+};
+
+Item.findById = function(id, cb){
+  console.log(id);
+  var _id = Mongo.ObjectID(id);
+  //id = (typeof id === 'string') ? Mongo.ObjectID(id) : id;
+  Item.collection.findOne({_id:_id}, function(err, obj){
+    var itm = changePrototype(obj);
+    cb(itm);
+  });
+};
+
+Item.deleteById = function(id, cb){
+  id = (typeof id === 'string') ? Mongo.ObjectID(id) : id;
+  Item.collection.findAndRemove({_id:id}, cb);
+};
+
+
 
   module.exports = Item;
+
+// PRIVATE FUNCTIONS ///
+
+function changePrototype(obj){
+  var item = _.create(Item.prototype, obj);
+
+  return item;
+}
+

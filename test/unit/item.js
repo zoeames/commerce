@@ -7,6 +7,7 @@ var expect = require('chai').expect;
 var Item = require('../../app/models/item');
 var dbConnect = require('../../app/lib/mongodb');
 var Mongo = require('mongodb');
+var ipod, couch, table;
 
 describe('Item', function(){
   before(function(done){
@@ -17,8 +18,17 @@ describe('Item', function(){
 
   beforeEach(function(done){
     Item.collection.remove(function(){
-      done();
+      ipod = new Item ({name:'iPod', dimensions:{length:'3', width:'5', height:'10'}, weight:'0.3', color:'purple', quantity:'12', msrp:'100', percentOff:'20'});
+      couch = new Item ({name:'couch', dimensions:{length:'3', width:'5', height:'10'}, weight:'0.3', color:'purple', quantity:'12', msrp:'100', percentOff:'20'});
+      table = new Item ({name:'table', dimensions:{length:'3', width:'5', height:'10'}, weight:'0.3', color:'purple', quantity:'12', msrp:'100', percentOff:'20'});
+      ipod.save(function(){
+        couch.save(function(){
+          table.save(function(){
+          done();
+          });
+       });
     });
+  });
   });
 
 
@@ -55,4 +65,30 @@ describe('Item', function(){
     });
   });
   });
+
+  describe('.findById', function(){
+     it('should find an item by id',function(done){
+        Item.find({},function(items){  
+           // console.log(items);
+           Item.findById(ipod._id.toString(), function(item){
+             console.log(item.name);
+             expect(item.name).to.equal('iPod');
+             done();
+            });
+          });
+        });
+    });
+
+ describe('.deleteById', function(){
+   it('should remove an Item in database by id', function(done){
+     Item.find({}, function(items){
+       Item.deleteById(ipod._id.toString(), function(){
+         Item.all( function(items2){
+           expect(items2).to.have.length(2);
+           done();
+           });
+        });
+      });
+    });
+   });
 });
