@@ -1,7 +1,7 @@
 'use strict';
 
 function Item(body){
-  console.log(body);
+  //console.log(body);
   this.name =body.name;
   this.dimensions={};
   this.dimensions.length = body.dimensions.length*1;
@@ -14,8 +14,19 @@ function Item(body){
   this.percentOff =parseInt(body.percentOff);
 }
 
+Object.defineProperty(Item, 'collection', {
+    get: function(){return global.mongodb.collection('items');}
+});
+
+
+
 Item.prototype.cost = function(){
     return (this.msrp - ((this.percentOff / 100) * this.msrp));
 };
 
-module.exports = Item;
+Item.prototype.save = function(cb){
+  Item.collection.save(this, cb);
+};
+
+
+  module.exports = Item;
