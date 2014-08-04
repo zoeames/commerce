@@ -3,7 +3,6 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var home = require('../controllers/home');
-var people = require('../controllers/people');
 
 module.exports =function(app, express){
     app.use(morgan('dev'));

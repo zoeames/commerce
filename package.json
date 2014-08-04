@@ -8,14 +8,16 @@
   },
   "scripts": {
     "test": "mocha test --recursive -R spec",
-    "coveralls" : "./node_modules/mocha/bin/mocha test --recursive -r blanket -R mocha-lcov-reporter | coveralls"
+    "coveralls": "./node_modules/mocha/bin/mocha test --recursive -r blanket -R mocha-lcov-reporter | coveralls"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/zoeames/commerce"
   },
   "author": "Zoe Ames <zoeames@gmail.com>",
-  "contributors": ["JoAnn Brooks <joannbrooks036@gmail.com>"],
+  "contributors": [
+    "JoAnn Brooks <joannbrooks036@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zoeames/commerce/issues"
@@ -25,6 +27,7 @@
     "body-parser": "^1.5.2",
     "express": "^4.7.2",
     "jade": "^1.5.0",
+    "mongodb": "^1.4.8",
     "morgan": "^1.2.2"
   },
   "devDependencies": {
