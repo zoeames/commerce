@@ -1,8 +1,23 @@
-a{
+nav a{
   font-family: monospace;
   text-decoration: none;
-  color: red;
-  border: 1px dashed green;
+  color: blue;
+  border: 2px dashed green;
   padding: 5px;
-  margin: 5px;
+  margin: 30px;
+  margin-bottom: 30px;
+}
+
+
+table {
+  margin: 20px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+table td{
+  text-align: center;
+  min-width: 60px;
+  border: 1px solid black;
+  padding: 3px;
 }

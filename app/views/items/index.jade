@@ -12,17 +12,33 @@ html
         a(href='/faq') FAQ
         a(href='/items/new') New Item
         a(href='/items') Inventory
+    
+    span
 
-    each item in items
-      ul 
-        li= item.name
-        li= item.dimensions.length
-        li= item.dimensions.width
-        li= item.dimensions.height
-        li= item.weight
-        li= item.color
-        li= item.quantity
-        li= item.msrp
-        li= item.cost()
-        li= item.percentOff
+    table
+      thead         
+        tr
+          th Name
+          th Length
+          th Width
+          th Height
+          th Weight
+          th Color
+          th Qty
+          th MSRP
+          th % Off
+          th Cost
+      tbody
+        each item in items
+          tr
+            td: a(href='/items/#{item._id.toString()}')= item.name
+            td= item.dimensions.length
+            td= item.dimensions.width
+            td= item.dimensions.height
+            td= item.weight
+            td= item.color
+            td= item.quantity
+            td= item.msrp
+            td= item.percentOff
+            td= item.cost()
 
