@@ -1,42 +1,30 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    title eCommerce
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    h2 Inventory List
-    nav
-        a(href='/') Home
-        a(href='/about') About
-        a(href='/faq') FAQ
-        a(href='/items/new') New Item
-        a(href='/items') Inventory
-    
-    span
+extends ../shared/template
 
-    table
-      thead         
-        tr
-          th Name
-          th Length
-          th Width
-          th Height
-          th Weight
-          th Quantity
-          th MSRP
-          th % Off
-          th Cost
-      tbody
-        each item in items
-          tr(style='background-color:#{item.color}')
-            td: a(href='/items/#{item._id.toString()}')= item.name
-            td= item.dimensions.length
-            td= item.dimensions.width
-            td= item.dimensions.height
-            td= item.weight
-            td= item.quantity
-            td $#{item.msrp.toFixed(2)}
-            td= item.percentOff
-            td $#{item.cost().toFixed(2)}
+block content
+  h2 Inventory List
+
+  table
+    thead         
+      tr
+        th Name
+        th Length
+        th Width
+        th Height
+        th Weight
+        th Quantity
+        th MSRP
+        th % Off
+        th Cost
+    tbody
+      each item in items
+        tr(style='background-color:#{item.color}')
+          td: a(href='/items/#{item._id.toString()}')= item.name
+          td= item.dimensions.length
+          td= item.dimensions.width
+          td= item.dimensions.height
+          td= item.weight
+          td= item.quantity
+          td $#{item.msrp.toFixed(2)}
+          td= item.percentOff
+          td $#{item.cost().toFixed(2)}
 

@@ -1,16 +1,4 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    title eCommerce: About
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    h2 About Page!
-    nav
-        a(href='/') Home
-        a(href='/about') About
-        a(href='/faq') FAQ
-        a(href='/items/new') New Item
-        a(href='/items') Inventory
-    span
+extends ../shared/template
 
+block content
+  h2 About Page!

@@ -1,29 +1,19 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    title eCommerce
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    h1 eCommerce
-    nav
-      a(href='/') Home
-      a(href='/about') About
-      a(href='/faq') FAQ
-      a(href='/items/new') New Item
-    
-    h2= item.name
+extends ../shared/template
 
-    #item(style='background-color:#{item.color};')
-      #nuke
-        form(method='post', action='/items/#{item._id}/delete')
-          button Delete #{item.name}
-      #dimensions
-        span l #{item.dimensions.l}in/
-        span w #{item.dimensions.w}in/
-        span h #{item.dimensions.h}in
-      #weight #{item.weight}lbs
-      #quantity= item.quantity
-      #msrp $#{item.msrp.toFixed(2)}
-      #sale #{item.percentOff}%
-      #cost $#{item.cost().toFixed(2)}
+block content
+  h2= item.name
+
+  #item(style='background-color:#{item.color};')
+    #nuke
+      form(method='post', action='/items/#{item._id}')
+        input(type='hidden', name='_method', value='delete')
+        button Delete #{item.name}
+    #dimensions
+      span l #{item.dimensions.length}in/
+      span w #{item.dimensions.width}in/
+      span h #{item.dimensions.height}in
+    #weight #{item.weight}lbs
+    #quantity= item.quantity
+    #msrp $#{item.msrp.toFixed(2)}
+    #sale #{item.percentOff}%
+    #cost $#{item.cost().toFixed(2)}
