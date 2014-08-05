@@ -5,13 +5,14 @@ html
     title eCommerce
     link(rel='stylesheet', href='/css/style.css')
   body
-    h1 eCommerce
+    h2 New Item
     nav
-      ul
-        li: a(href='/') Home
-        li: a(href='/about') About
-        li: a(href='/faq') FAQ
-    
+        a(href='/') Home
+        a(href='/about') About
+        a(href='/faq') FAQ
+        a(href='/items/new') New Item
+        a(href='/items') Inventory
+
     form(method='post', action='/items')
       input(name='name', type='text', placeholder='iPad', autofocus=true)
       input(name='dimensions[length]', type='number', placeholder='length')

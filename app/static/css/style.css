@@ -1,0 +1,8 @@
+a{
+  font-family: monospace;
+  text-decoration: none;
+  color: red;
+  border: 1px dashed green;
+  padding: 5px;
+  margin: 5px;
+}
