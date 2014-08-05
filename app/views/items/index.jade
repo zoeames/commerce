@@ -23,22 +23,20 @@ html
           th Width
           th Height
           th Weight
-          th Color
-          th Qty
+          th Quantity
           th MSRP
           th % Off
           th Cost
       tbody
         each item in items
-          tr
+          tr(style='background-color:#{item.color}')
             td: a(href='/items/#{item._id.toString()}')= item.name
             td= item.dimensions.length
             td= item.dimensions.width
             td= item.dimensions.height
             td= item.weight
-            td= item.color
             td= item.quantity
-            td= item.msrp
+            td $#{item.msrp.toFixed(2)}
             td= item.percentOff
-            td= item.cost()
+            td $#{item.cost().toFixed(2)}
 
